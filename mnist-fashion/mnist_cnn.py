@@ -1,6 +1,5 @@
 import numpy as np
 import tensorflow as tf
-from tensorflow import keras
 
 gpus = tf.config.experimental.list_physical_devices('GPU')
 tf.config.experimental.set_memory_growth(gpus[0], True)
@@ -27,8 +26,8 @@ train_images = train_images.reshape(60000, 28, 28, 1)
 test_images = test_images.reshape(10000, 28, 28, 1)
 
 model = tf.keras.Sequential([
-    tf.keras.layers.Conv2D(64, kernel_size=(3,3), activation='relu', input_shape=(28,28,1)),
-    tf.keras.layers.Conv2D(32, kernel_size=(3,3), activation='relu'),
+    tf.keras.layers.Conv2D(64, kernel_size=(6,6), activation='relu', input_shape=(28,28,1)),
+    tf.keras.layers.Conv2D(32, kernel_size=(6,6), activation='relu'),
     tf.keras.layers.MaxPool2D(pool_size=(2,2)),
     tf.keras.layers.Dropout(0.25),
     tf.keras.layers.Flatten(),
